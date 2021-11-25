@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{ .Site.Title }}</title>
+
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="{{ .Site.Params.description }}">
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" href="css/styles.css">
+
+		<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js" integrity="sha256-7lWo7cjrrponRJcS6bc8isfsPDwSKoaYfGIHgSheQkk=" crossorigin="anonymous"></script>
+
+		<script src="js/hugo-cell-score.js"></script>
+	</head>
+	<body>
+		<div class="site-wrapper">
+			<h3 class="masthead-brand">{{ .Site.Title }}</h3>
+
+			<div class="breakdown" style="display: none;">
+				<iframe title="breakdown" class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="html/saved_resource.html"></iframe>
+
+				<div class="info">
+					<div class="title">?</div>
+				</div>
+				<canvas id="cycle-breakdown-chart" class="chart" width="0" height="0" style="display: block; width: 0px; height: 0px;"></canvas>
+			</div>
+
+			<div class="cycles-won">
+				<iframe title="cycles won" class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="html/saved_resource.html"></iframe>
+				
+				<div class="title">Cycles Won</div>
+				<span class="res winner">RES: <span>0</span></span><span class="enl">ENL: <span>0</span></span>
+				<div id="cycles-won-legend"></div>
+				<canvas id="cycles-won-chart" class="chart" width="800" height="400" style="display: block; width: 800px; height: 400px;"></canvas>
+			</div>
+
+			<div class="longest-streak">
+				<div class="title">Longest Streak</div>
+				<span class="res winner">RES: <span>0</span></span><span class="enl">ENL: <span>0</span></span>
+			</div>
+
+			<div class="cumulative-mu">
+				<iframe title="cumulative mu" class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="html/saved_resource.html"></iframe>
+
+				<div class="title">Cumulative MU</div>
+				<span class="res winner">RES: <span>276,999,000</span></span><span class="enl">ENL: <span>26,180,100</span></span>
+				<canvas id="total-mu-chart" class="chart" width="800" height="400" style="display: block; width: 800px; height: 400px;"></canvas>
+			</div>
+
+			<div class="scoreboard">
+				<div class="info">
+					<div class="title">2014.02</div>
+					<span class="res">RES: <span>16k</span></span><span class="enl winner">ENL: <span>18k</span></span>
+				</div>
+				{{ $url := .Site.Params.scoreCSV }}
+				{{ $sep := "," }}
+				{{ range $i, $r := after 1 ( getCSV $sep $url ) }}
+					{{ $enl_score := index $r 3 }}
+					{{ $res_score := index $r 4 }}
+				<div class="cycle-score {{ index $r 1 }}.{{ index $r 2 }} {{ if gt $enl_score $res_score }}enl{{ else }}res{{ end }} faded" data-title="{{ index $r 1 }}.{{ index $r 2 }}" data-enl="{{ index $r 3 }}" data-res="{{ index $r 4 }}" title="RES: {{ index $r 4 }}, ENL: {{ index $r 3 }}"></div>
+				{{ end }}
+			</div>
+		</div>
+	</body>
+</html>

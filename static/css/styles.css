@@ -1,0 +1,50 @@
+.e, .enl { color: #2bed1b; }
+.r, .res { color: #00bfff; }
+.w, .winner { opacity: 1 !important; }
+
+.inner { width: 100%; }
+.inner div.cycle-score { display: inline; }
+
+.cycle-score {
+    display: block;
+    float: left;
+    height: 50px;
+    width: 50px;
+}
+
+.cycle-score.faded { opacity: 0.7; }
+.cycle-score.res { background-color: #00bfff; }
+.cycle-score.enl { background-color: #2bed1b; }
+
+.scoreboard, .cumulative-mu, .cycles-won, .longest-streak {
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+.scoreboard .info .res, .cumulative-mu .res, .cycles-won .res, .longest-streak .res {
+    padding-right: 10px;
+    opacity: 0.7
+}
+
+.scoreboard .info .enl, .cumulative-mu .enl, .cycles-won .enl, .longest-streak .enl {
+    padding-left: 10px;
+    opacity: 0.7
+}
+
+body {
+    font-family: "Coda", sans-serif;
+    font-size: 14pt;
+    background-color: #111111;
+    color: #04eaf5;
+}
+
+.site-wrapper {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.site-wrapper > div {
+    clear: both;
+    padding-bottom: 25px;
+}

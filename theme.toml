@@ -3,19 +3,14 @@
 
 name = "Hugo Cell Score"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
-description = ""
-homepage = "http://example.com/"
-tags = []
+licenselink = "https://github.com/BoyPlankton/hugo-cell-score/blob/main/LICENSE"
+description = "This is a Hugo theme for displaying historical cell score data for the AR game Ingress."
+homepage = "https://github.com/BoyPlankton/hugo-cell-score"
+tags = ["ingress"]
 features = []
 min_version = "0.41.0"
 
 [author]
-  name = ""
-  homepage = ""
+  name = "Vincent Marcus"
+  homepage = "https://github.com/BoyPlankton"
 
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""

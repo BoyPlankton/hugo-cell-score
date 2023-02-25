@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "jquery": "3.6.3",
-    "jquery-ui": "1.13.2",
-    "chart.js": "4.2.0"
+    "jquery-ui": "1.13.2"
   }
 }
